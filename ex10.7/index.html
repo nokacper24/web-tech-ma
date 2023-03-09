@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tictacotoe</title>
+    <style>
+        /* reset styles */
+        * {
+            margin: 5;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* set rem and em */
+        html {
+            font-size: 20px;
+        }
+        
+
+        #tictac-container {
+            display: grid;
+            width: min-content;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            border: 1px solid black;
+        }
+
+        #tictac-container > div:nth-child(2n-1) {
+            background-color: #eee;
+        }
+
+        .tictac-cell {
+            height: 32vh;
+            width: 32vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+        }
+    </style>
+    <script>
+
+        window.onload = main;
+
+
+        function main() {
+            create_cells();
+            fill_cells();
+        }
+
+        function create_cells() {
+            let container = document.getElementById("tictac-container");
+            for (let i = 0; i < 9; i++) {
+                let cell = document.createElement("div");
+                cell.classList.add("tictac-cell");
+
+                container.appendChild(cell);
+            }
+        }
+
+        function fill_cells() {
+            let cells = document.querySelectorAll(".tictac-cell");
+            for (let i = 0; i < cells.length; i++) {
+                if (i % 2 == 0) {
+                    cells[i].innerText = "X";
+                } else {
+                    cells[i].innerText = "O";
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="tictac-container"></div>
+</body>
+
+</html>
